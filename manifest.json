@@ -1,0 +1,67 @@
+{
+  "$schema": "schemas/manifest.schema.json",
+  "schema_version": 1,
+  "snapshot": {
+    "id": "2026-08-31-local-text-snapshot",
+    "date": "2026-08-31",
+    "package_name": "com.netease.yzs",
+    "apk_version_name": "11.9.0",
+    "apk_version_code": 200,
+    "unity_version": "2022.3.62f2",
+    "source": "locally acquired game resource text tables"
+  },
+  "totals": {
+    "files": 3,
+    "bytes": 19238791,
+    "language_tables": 22,
+    "localized_entries": 134382
+  },
+  "files": [
+    {
+      "path": "data/texts/extracted/cardnametext.json",
+      "bytes": 2676089,
+      "sha256": "8bfe979b1fafac3ad01acc46716b988127dbdade0c4868877519f61796d43684",
+      "root_key": "cardnametext",
+      "languages": {
+        "Jpn": 5356,
+        "Eng": 5356,
+        "Chs": 5356,
+        "Kor": 5356,
+        "Cht": 5356,
+        "Fre": 5356,
+        "Ita": 5356,
+        "Ger": 5356,
+        "Spa": 5356
+      }
+    },
+    {
+      "path": "data/texts/extracted/cardtext.json",
+      "bytes": 68338,
+      "sha256": "817e870a94edeb5b38faf64197cb6017646a9daf7ca870616f0d1588c4f55d28",
+      "root_key": "cardtext",
+      "languages": {
+        "Jpn": 300,
+        "Chs": 300,
+        "Kor": 300,
+        "Cht": 300
+      }
+    },
+    {
+      "path": "data/texts/extracted/skilldesctext.json",
+      "bytes": 16494364,
+      "sha256": "d07ec7635cc33e0d7b26f4efeba88a8f7c782ed4b030250964d9fb1ebaaa385b",
+      "root_key": "skilldesctext",
+      "languages": {
+        "Jpn": 9442,
+        "Eng": 9442,
+        "Chs": 9442,
+        "Kor": 9442,
+        "Cht": 9442,
+        "Fre": 9442,
+        "Ita": 9442,
+        "Ger": 9442,
+        "Spa": 9442
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:svwbdata:schema:localized-text-table:v1",
+  "title": "SVWBData localized text table",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["cardnametext"],
+      "properties": {
+        "cardnametext": { "$ref": "#/$defs/languageMap" }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["cardtext"],
+      "properties": {
+        "cardtext": { "$ref": "#/$defs/languageMap" }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["skilldesctext"],
+      "properties": {
+        "skilldesctext": { "$ref": "#/$defs/languageMap" }
+      },
+      "additionalProperties": false
+    }
+  ],
+  "$defs": {
+    "languageMap": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "enum": ["Jpn", "Eng", "Chs", "Kor", "Cht", "Fre", "Ita", "Ger", "Spa"]
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/textMap"
+      }
+    },
+    "textMap": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}
