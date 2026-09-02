@@ -34,34 +34,74 @@
     },
     "totals": {
       "type": "object",
-      "required": ["files", "bytes", "language_tables", "localized_entries"],
+      "required": [
+        "files",
+        "bytes",
+        "language_tables",
+        "localized_entries",
+        "card_mappings",
+        "resolved_card_names",
+        "unresolved_card_names"
+      ],
       "properties": {
         "files": { "type": "integer", "minimum": 0 },
         "bytes": { "type": "integer", "minimum": 0 },
         "language_tables": { "type": "integer", "minimum": 0 },
-        "localized_entries": { "type": "integer", "minimum": 0 }
+        "localized_entries": { "type": "integer", "minimum": 0 },
+        "card_mappings": { "type": "integer", "minimum": 0 },
+        "resolved_card_names": { "type": "integer", "minimum": 0 },
+        "unresolved_card_names": { "type": "integer", "minimum": 0 }
       },
       "additionalProperties": false
     },
     "files": {
       "type": "array",
       "items": {
-        "type": "object",
-        "required": ["path", "bytes", "sha256", "root_key", "languages"],
-        "properties": {
-          "path": { "type": "string", "pattern": "^data/texts/extracted/[^/]+\\.json$" },
-          "bytes": { "type": "integer", "minimum": 0 },
-          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
-          "root_key": { "enum": ["cardnametext", "cardtext", "skilldesctext"] },
-          "languages": {
+        "oneOf": [
+          {
             "type": "object",
-            "propertyNames": {
-              "enum": ["Jpn", "Eng", "Chs", "Kor", "Cht", "Fre", "Ita", "Ger", "Spa"]
+            "required": ["kind", "path", "bytes", "sha256", "root_key", "languages"],
+            "properties": {
+              "kind": { "const": "localized_text" },
+              "path": { "type": "string", "pattern": "^data/texts/extracted/[^/]+\\.json$" },
+              "bytes": { "type": "integer", "minimum": 0 },
+              "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+              "root_key": { "enum": ["cardnametext", "cardtext", "skilldesctext"] },
+              "languages": {
+                "type": "object",
+                "propertyNames": {
+                  "enum": ["Jpn", "Eng", "Chs", "Kor", "Cht", "Fre", "Ita", "Ger", "Spa"]
+                },
+                "additionalProperties": { "type": "integer", "minimum": 0 }
+              }
             },
-            "additionalProperties": { "type": "integer", "minimum": 0 }
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": [
+              "kind",
+              "path",
+              "bytes",
+              "sha256",
+              "language",
+              "record_count",
+              "resolved_name_count",
+              "unresolved_name_count"
+            ],
+            "properties": {
+              "kind": { "const": "card_name_map" },
+              "path": { "const": "data/cards/hash-id-name-map.json" },
+              "bytes": { "type": "integer", "minimum": 0 },
+              "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+              "language": { "const": "Chs" },
+              "record_count": { "type": "integer", "minimum": 0 },
+              "resolved_name_count": { "type": "integer", "minimum": 0 },
+              "unresolved_name_count": { "type": "integer", "minimum": 0 }
+            },
+            "additionalProperties": false
           }
-        },
-        "additionalProperties": false
+        ]
       }
     }
   },

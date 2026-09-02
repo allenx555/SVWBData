@@ -5,6 +5,9 @@
 
 !/data/
 /data/*
+!/data/cards/
+/data/cards/*
+!/data/cards/hash-id-name-map.json
 !/data/texts/
 /data/texts/*
 !/data/texts/extracted/

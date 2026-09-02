@@ -52,3 +52,33 @@
 语义或后续校对能力。
 
 机器读取时应遵循 [`schemas/localized-text-table.schema.json`](../schemas/localized-text-table.schema.json)。
+
+## 卡牌短码名称映射
+
+`data/cards/hash-id-name-map.json` 保存主数据短码到基础卡牌和简体中文名称的映射：
+
+```json
+{
+  "hash_id": "e4Gg",
+  "base_card_id": "10503210",
+  "name_keys": ["CN_10503210"],
+  "name": "大游戏世界"
+}
+```
+
+`hash_id` 来自 `CardMaster.HashId`，当前长度为 4 或 5，字符范围为字母、数字、下划线
+和连字符。名称通过以下关系取得：
+
+```text
+CardMaster.HashId
+  → CardMaster.CardTextId
+  → CardText._Name
+  → MasterTextLabel.Id
+  → MasterTextLabel.Text
+```
+
+同一卡牌的普通、闪卡等变体会共享短码。映射按短码去重；若多个名称键最终显示同一个
+名称，则全部保留在 `name_keys`。当前有 43 条主数据记录没有简体中文名称，使用
+`name: null` 明确表示未解析，而不是删除短码。
+
+机器读取时应遵循 [`schemas/hash-id-name-map.schema.json`](../schemas/hash-id-name-map.schema.json)。

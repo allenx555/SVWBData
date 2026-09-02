@@ -1,11 +1,15 @@
 # SVWBData
 
 SVWBData 是一个面向研究、互操作与自动化开发的卡牌文本数据快照仓库。仓库只保存
-规范化后的多语言文本 JSON，以及解释数据格式、更新流程和验证要求的文档。
+规范化后的多语言文本 JSON、卡牌短码名称映射，以及解释数据格式、更新流程和验证要求
+的文档。
 
 ## 仓库内容
 
 ```text
+data/cards/
+└─ hash-id-name-map.json
+
 data/texts/extracted/
 ├─ cardnametext.json
 ├─ cardtext.json
@@ -18,6 +22,7 @@ docs/
 └─ maa-integration.md
 
 schemas/
+├─ hash-id-name-map.schema.json
 ├─ localized-text-table.schema.json
 └─ manifest.schema.json
 ```
@@ -27,6 +32,7 @@ schemas/
 - Android 包名：`com.netease.yzs`
 - APK 版本：`11.9.0`（`versionCode 200`）
 - Unity 版本：`2022.3.62f2`
+- 卡牌短码映射：1,798 条，其中 1,755 条具有简体中文名称
 
 | 文件 | 语言数 | 每种语言条目数 |
 |---|---:|---:|
@@ -38,6 +44,9 @@ schemas/
 [`docs/data-format.md`](docs/data-format.md)，更新与验证要求见
 [`docs/extraction-process.md`](docs/extraction-process.md) 和
 [`docs/verification.md`](docs/verification.md)。
+
+短码查询数据位于 [`data/cards/hash-id-name-map.json`](data/cards/hash-id-name-map.json)。
+其中 `hash_id` 是主数据 `CardMaster.HashId`，并通过卡牌文本键关联简体中文名称。
 
 ## 明确不收录的内容
 

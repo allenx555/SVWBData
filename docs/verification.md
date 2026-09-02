@@ -19,6 +19,13 @@
 - 更新差异中不应出现未经确认的大规模删除或整种语言清空。
 - `manifest.json` 自身符合 `schemas/manifest.schema.json`。
 
+短码映射还必须满足：
+
+- `hash_id` 区分大小写且全表唯一。
+- 每条记录只对应一个 `base_card_id` 和至多一个非空显示名称。
+- `record_count` 等于数组长度，并等于已解析与未解析名称数之和。
+- 数据符合 `schemas/hash-id-name-map.schema.json`。
+
 ## 公开边界
 
 提交前检查 Git 跟踪文件，确保只有：
@@ -28,6 +35,7 @@
 README.md
 manifest.json
 data/texts/extracted/*.json
+data/cards/hash-id-name-map.json
 docs/**
 schemas/**
 ```
@@ -41,5 +49,6 @@ schemas/**
 
 ## 当前基线
 
-当前快照共有 3 个 JSON、22 个语言表和 134,382 个本地化字符串槽位，其中允许包含
-空字符串。详细分项与哈希以根目录 `manifest.json` 为准。
+当前快照共有 3 个文本 JSON、22 个语言表、134,382 个本地化字符串槽位和 1,798 条
+短码映射，其中允许包含空字符串或未解析名称。详细分项与哈希以根目录
+`manifest.json` 为准。

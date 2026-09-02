@@ -11,13 +11,17 @@
     "source": "locally acquired game resource text tables"
   },
   "totals": {
-    "files": 3,
-    "bytes": 19238791,
+    "files": 4,
+    "bytes": 19546682,
     "language_tables": 22,
-    "localized_entries": 134382
+    "localized_entries": 134382,
+    "card_mappings": 1798,
+    "resolved_card_names": 1755,
+    "unresolved_card_names": 43
   },
   "files": [
     {
+      "kind": "localized_text",
       "path": "data/texts/extracted/cardnametext.json",
       "bytes": 2676089,
       "sha256": "8bfe979b1fafac3ad01acc46716b988127dbdade0c4868877519f61796d43684",
@@ -35,6 +39,7 @@
       }
     },
     {
+      "kind": "localized_text",
       "path": "data/texts/extracted/cardtext.json",
       "bytes": 68338,
       "sha256": "817e870a94edeb5b38faf64197cb6017646a9daf7ca870616f0d1588c4f55d28",
@@ -47,6 +52,7 @@
       }
     },
     {
+      "kind": "localized_text",
       "path": "data/texts/extracted/skilldesctext.json",
       "bytes": 16494364,
       "sha256": "d07ec7635cc33e0d7b26f4efeba88a8f7c782ed4b030250964d9fb1ebaaa385b",
@@ -62,6 +68,16 @@
         "Ger": 9442,
         "Spa": 9442
       }
+    },
+    {
+      "kind": "card_name_map",
+      "path": "data/cards/hash-id-name-map.json",
+      "bytes": 307891,
+      "sha256": "1a781517307d5937258079b5ac3d67ea789df5185b6dd5af72f8262201b9aab6",
+      "language": "Chs",
+      "record_count": 1798,
+      "resolved_name_count": 1755,
+      "unresolved_name_count": 43
     }
   ]
 }

@@ -15,8 +15,10 @@
 3. 在本地还原资源容器并解析其序列化格式。
 4. 将每张表规范化为“表名 → 语言 → 文本 ID → 字符串”的 JSON 结构。
 5. 保留原始文本标记、空字符串、换行与语言集合，不进行翻译或语义改写。
-6. 在临时目录完成结构、条目数、哈希与禁止内容检查。
-7. 只把三份审核通过的 JSON 和更新后的 `manifest.json` 写入本仓库。
+6. 从卡牌主表读取 `HashId`，经 `CardTextId`、名称键和本地化标签关联简体中文名称，
+   再按区分大小写的短码去重。
+7. 在临时目录完成结构、条目数、哈希与禁止内容检查。
+8. 只把三份文本 JSON、一份短码映射和更新后的 `manifest.json` 写入本仓库。
 
 ## 版本更新
 
@@ -27,6 +29,7 @@
 data/texts/extracted/cardnametext.json
 data/texts/extracted/cardtext.json
 data/texts/extracted/skilldesctext.json
+data/cards/hash-id-name-map.json
 ```
 
 随后更新 `manifest.json` 中的快照日期、字节数、SHA-256、语言列表和条目数，并按

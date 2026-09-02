@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:svwbdata:schema:hash-id-name-map:v1",
+  "title": "SVWBData short hash ID to card name map",
+  "type": "object",
+  "required": [
+    "$schema",
+    "schema_version",
+    "language",
+    "record_count",
+    "resolved_name_count",
+    "unresolved_name_count",
+    "cards"
+  ],
+  "properties": {
+    "$schema": { "type": "string", "minLength": 1 },
+    "schema_version": { "const": 1 },
+    "language": { "const": "Chs" },
+    "record_count": { "type": "integer", "minimum": 0 },
+    "resolved_name_count": { "type": "integer", "minimum": 0 },
+    "unresolved_name_count": { "type": "integer", "minimum": 0 },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["hash_id", "base_card_id", "name_keys", "name"],
+        "properties": {
+          "hash_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{4,5}$"
+          },
+          "base_card_id": {
+            "type": "string",
+            "pattern": "^[0-9]+$"
+          },
+          "name_keys": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^CN_[0-9]+$"
+            }
+          },
+          "name": {
+            "type": ["string", "null"]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
